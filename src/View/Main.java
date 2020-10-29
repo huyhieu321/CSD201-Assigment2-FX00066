@@ -1,12 +1,11 @@
 package View;
 
-import Business.MyList;
-import Business.MyQueue;
-import Business.MyStack;
-import Business.OperationToProduct;
+import Model.DoublyLinkedList;
+import Model.MyQueue;
+import Model.MyStack;
+import Model.OperationToProduct;
 import Model.Product;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -18,7 +17,7 @@ public class Main {
         boolean isArrayEmpty = true;
         boolean keepRunning = true;
         OperationToProduct operation = new OperationToProduct();
-        MyList<Product> productMyList = new MyList<>();
+        DoublyLinkedList<Product> productMyList = new DoublyLinkedList<>();
         MyStack<Product> productMyStack = new MyStack<>();
         MyQueue<Product> productMyQueue = new MyQueue<>();
         while (keepRunning) {
@@ -56,7 +55,6 @@ public class Main {
                     productQuantity = scanner.nextInt();
                     System.out.print("Input Product Price");
                     productPrice = scanner.nextDouble();
-
                     // Add product add last of list product
                     operation.addLast(productMyList,
                             operation.createProduct(productId, productName, productQuantity, productPrice));
