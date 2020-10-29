@@ -1,21 +1,43 @@
 package Model;
 
-public class Node<T> {
+class Node<T> {
 
-    T info;
+    private T data;
+    Node next, prev;
 
-    Node next;
-
-    public Node() {
+    public Node(T data, Node<T> prev, Node<T> next) {
+        this.data = data;
+        this.prev = prev;
+        this.next = next;
     }
 
+    public T getData() {
+        return data;
+    }
 
-    public Node(T info, Node next) {
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public Node<T> getPrev() {
+        return prev;
+    }
+
+    public void setPrev(Node<T> prev) {
+        this.prev = prev;
+    }
+
+    public Node<T> getNext() {
+        return next;
+    }
+
+    public void setNext(Node<T> next) {
+        this.next = next;
     }
 
     @Override
 
     public String toString() {
-        return "";
+        return data.toString();
     }
 }

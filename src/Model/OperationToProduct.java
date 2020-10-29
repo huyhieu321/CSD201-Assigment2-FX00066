@@ -1,11 +1,9 @@
-package Business;
-
-import Model.Product;
+package Model;
 
 public class OperationToProduct {
 
     //  Search index of element of product in Linked list, if not found then return-1
-    public int index(Product p, MyList<Product> list) {
+    public int index(Product p, DoublyLinkedList<Product> list) {
 
         return -1;
     }
@@ -16,7 +14,7 @@ public class OperationToProduct {
     }
 
     // Read all products from file and save to Linked List ( Insert at tail of Linked List), information of a product in a line (
-    public void getAllItemsFromFile(String fileName, MyList<Product> list) {
+    public void getAllItemsFromFile(String fileName, DoublyLinkedList<Product> list) {
 
     }
 
@@ -30,40 +28,40 @@ public class OperationToProduct {
 
 
     // Add a new product into tail of Linked List
-    public void addLast(MyList<Product> list, Product product) {
+    public void addLast(DoublyLinkedList<Product> list, Product product) {
 
     }
 
     // Display information of all product on Linked list
-    public void displayAll(MyList<Product> list) {
+    public void displayAll(DoublyLinkedList<Product> list) {
 
 
     }
 
     // Write all product of Linked List to file
-    public void writeAllItemsToFile(String fileName, MyList<Product> list) {
+    public void writeAllItemsToFile(String fileName, DoublyLinkedList<Product> list) {
 
     }
 
     // Search first element by ID
-    public void searchByCode(MyList<Product> list, String key) {
+    public void searchByCode(DoublyLinkedList<Product> list, String key) {
 
 
     }
 
     // Delete first element by ID (=ID)
-    public void deleteByCode(MyList<Product> list, String key) {
+    public void deleteByCode(DoublyLinkedList<Product> list, String key) {
 
     }
 
 // Sort by ID
 
-    public void sortByCode(MyList<Product> list) {
+    public void sortByCode(DoublyLinkedList<Product> list) {
 
     }
 
     // Add new product to head of Linked list
-    public void addFirst(MyList<Product> list) {
+    public void addFirst(DoublyLinkedList<Product> list) {
 
     }
 
@@ -73,7 +71,7 @@ public class OperationToProduct {
     }
 
     //Delete element at position k
-    public void deletePosition(MyList<Product> list) {
+    public void deletePosition(DoublyLinkedList<Product> list) {
 
 
     }
