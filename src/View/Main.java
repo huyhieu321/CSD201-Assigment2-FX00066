@@ -1,10 +1,7 @@
 package View;
 
-import Model.DoublyLinkedList;
-import Model.MyQueue;
-import Model.MyStack;
-import Model.OperationToProduct;
-import Model.Product;
+
+import Model.*;
 
 import java.util.Scanner;
 
@@ -56,8 +53,7 @@ public class Main {
                     System.out.print("Input Product Price");
                     productPrice = scanner.nextDouble();
                     // Add product add last of list product
-                    operation.addLast(productMyList,
-                            operation.createProduct(productId, productName, productQuantity, productPrice));
+                    operation.addLast(productMyList, operation.createProduct(productId, productName, productQuantity, productPrice));
                     System.out.println("Success add new product");
                     break;
 
@@ -66,6 +62,7 @@ public class Main {
                     break;
 
                 case 4:
+                    operation.writeAllItemsToFile("Filename", productMyList);
                     break;
 
                 case 5:

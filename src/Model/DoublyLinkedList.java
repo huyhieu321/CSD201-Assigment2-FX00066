@@ -173,6 +173,10 @@ public class DoublyLinkedList<T> implements DoublyLinkedListImp<T> {
         return false;
     }
 
+    @Override
+    public void printData() {
+
+    }
 
     @Override
     public Iterator iterator() {

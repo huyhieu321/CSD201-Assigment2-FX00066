@@ -15,7 +15,7 @@ public class OperationToProduct {
 
     // Read all products from file and save to Linked List ( Insert at tail of Linked List), information of a product in a line (
     public void getAllItemsFromFile(String fileName, DoublyLinkedList<Product> list) {
-
+        
     }
 
     public void getAllItemsFromFile(String fileName, MyStack<Product> stack) {
@@ -29,13 +29,17 @@ public class OperationToProduct {
 
     // Add a new product into tail of Linked List
     public void addLast(DoublyLinkedList<Product> list, Product product) {
+        list.addLast(product);
+    }
 
+    // Add new product to head of Linked list
+    public void addFirst(DoublyLinkedList<Product> list,Product product) {
+        list.addFirst(product);
     }
 
     // Display information of all product on Linked list
     public void displayAll(DoublyLinkedList<Product> list) {
-
-
+        list.printData();
     }
 
     // Write all product of Linked List to file
@@ -60,20 +64,14 @@ public class OperationToProduct {
 
     }
 
-    // Add new product to head of Linked list
-    public void addFirst(DoublyLinkedList<Product> list) {
-
-    }
-
     // Convert to binary
     public void convertBinary(int i) {
 
     }
 
     //Delete element at position k
-    public void deletePosition(DoublyLinkedList<Product> list) {
-
-
+    public void deletePosition(DoublyLinkedList<Product> list, int index) {
+        list.removeAt(index);
     }
 
 }
