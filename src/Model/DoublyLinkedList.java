@@ -59,15 +59,41 @@ public class DoublyLinkedList<T> implements DoublyLinkedListImp<T> {
     }
 
     @Override
-    public T peekFirst() {
+    public T getFirst() {
         if(isEmpty()) throw new RuntimeException("Empty linked list!");
         return head.getData();
     }
 
     @Override
-    public T peekLast() {
+    public T getLast() {
         if(isEmpty()) throw new RuntimeException("Empty linked list!");
         return tail.getData();
+    }
+
+    @Override
+    public T getAt(int index) {
+        if(index < 0 || index >= size) throw new IllegalArgumentException();
+
+        int i;
+        Node<T> currentNode;
+
+        if(index < size / 2){
+            i = 0;
+            currentNode = head;
+            while (i != index) {
+                currentNode = currentNode.getNext();
+                i++;
+            }
+        }else{
+            i = size - 1;
+            currentNode = tail;
+            while (i != index) {
+                currentNode = currentNode.getPrev();
+                i--;
+            }
+        }
+
+        return currentNode.getData();
     }
 
     @Override
