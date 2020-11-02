@@ -35,7 +35,7 @@ public class Main {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    operation.getAllItemsFromFile("", productMyList);
+                    operation.getAllItemsFromFile("product", productMyList);
                     break;
 
                 case 2:
