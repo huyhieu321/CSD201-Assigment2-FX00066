@@ -1,12 +1,8 @@
 package View;
 
-import Business.MyList;
-import Business.MyQueue;
-import Business.MyStack;
-import Business.OperationToProduct;
-import Model.Product;
 
-import java.util.ArrayList;
+import Model.*;
+
 import java.util.Scanner;
 
 public class Main {
@@ -18,7 +14,7 @@ public class Main {
         boolean isArrayEmpty = true;
         boolean keepRunning = true;
         OperationToProduct operation = new OperationToProduct();
-        MyList<Product> productMyList = new MyList<>();
+        DoublyLinkedList<Product> productMyList = new DoublyLinkedList<>();
         MyStack<Product> productMyStack = new MyStack<>();
         MyQueue<Product> productMyQueue = new MyQueue<>();
         while (keepRunning) {
@@ -56,10 +52,8 @@ public class Main {
                     productQuantity = scanner.nextInt();
                     System.out.print("Input Product Price");
                     productPrice = scanner.nextDouble();
-
                     // Add product add last of list product
-                    operation.addLast(productMyList,
-                            operation.createProduct(productId, productName, productQuantity, productPrice));
+                    operation.addLast(productMyList, operation.createProduct(productId, productName, productQuantity, productPrice));
                     System.out.println("Success add new product");
                     break;
 
@@ -68,6 +62,7 @@ public class Main {
                     break;
 
                 case 4:
+                    operation.writeAllItemsToFile("Filename", productMyList);
                     break;
 
                 case 5:
