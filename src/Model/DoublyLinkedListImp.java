@@ -20,10 +20,12 @@ public interface DoublyLinkedListImp<T> extends Iterable<T>{
     void addLast(T element);
 
     // O(1)
-    T peekFirst();
+    T getFirst();
 
     // O(1)
-    T peekLast();
+    T getLast();
+
+    T getAt(int index);
 
     // O(1)
     T removeFirst();

@@ -1,5 +1,7 @@
 package Model;
 
+import java.io.*;
+
 public class OperationToProduct {
 
     //  Search index of element of product in Linked list, if not found then return-1
@@ -13,9 +15,38 @@ public class OperationToProduct {
         return new Product(id, name, quantity, price);
     }
 
+    // Write all product of Linked List to file
+    public void writeAllItemsToFile(String fileName, DoublyLinkedList<Product> list) {
+        for (int i = 0; i < list.size(); i++){
+            try {
+                FileOutputStream fileOut = new FileOutputStream(fileName);
+                ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+                objectOut.writeObject(list.getAt(i));
+                objectOut.close();
+                System.out.println("The Object  was successfully written to a file");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
     // Read all products from file and save to Linked List ( Insert at tail of Linked List), information of a product in a line (
     public void getAllItemsFromFile(String fileName, DoublyLinkedList<Product> list) {
-        
+        boolean cont = true;
+        while (cont) {
+            try {
+                FileInputStream fis = new FileInputStream(fileName);
+                ObjectInputStream input = new ObjectInputStream(fis);
+                Product product = (Product) input.readObject();
+                if (product != null) {
+                    list.add(product);
+                } else {
+                    cont = false;
+                }
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void getAllItemsFromFile(String fileName, MyStack<Product> stack) {
@@ -33,7 +64,7 @@ public class OperationToProduct {
     }
 
     // Add new product to head of Linked list
-    public void addFirst(DoublyLinkedList<Product> list,Product product) {
+    public void addFirst(DoublyLinkedList<Product> list, Product product) {
         list.addFirst(product);
     }
 
@@ -42,14 +73,8 @@ public class OperationToProduct {
         list.printData();
     }
 
-    // Write all product of Linked List to file
-    public void writeAllItemsToFile(String fileName, DoublyLinkedList<Product> list) {
-
-    }
-
     // Search first element by ID
     public void searchByCode(DoublyLinkedList<Product> list, String key) {
-
 
     }
 
