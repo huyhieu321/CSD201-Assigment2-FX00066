@@ -11,7 +11,7 @@ public class DoublyLinkedList<T> implements DoublyLinkedListImp<T> {
     @Override
     public void clear() {
         Node<T> currentNode = head;
-        while (currentNode != null){
+        while (currentNode != null) {
             Node<T> nextNode = currentNode.getNext();
             currentNode.setNext(null);
             currentNode.setPrev(null);
@@ -38,9 +38,9 @@ public class DoublyLinkedList<T> implements DoublyLinkedListImp<T> {
 
     @Override
     public void addFirst(T element) {
-        if(isEmpty()){
+        if (isEmpty()) {
             head = tail = new Node<T>(element, null, null);
-        }else{
+        } else {
             head.setPrev(new Node<T>(element, null, head));
             head = head.getPrev();
         }
@@ -49,9 +49,9 @@ public class DoublyLinkedList<T> implements DoublyLinkedListImp<T> {
 
     @Override
     public void addLast(T element) {
-        if(isEmpty()){
+        if (isEmpty()) {
             head = tail = new Node<>(element, null, null);
-        }else{
+        } else {
             tail.setNext(new Node<>(element, tail, null));
             tail = tail.getNext();
         }
@@ -60,31 +60,31 @@ public class DoublyLinkedList<T> implements DoublyLinkedListImp<T> {
 
     @Override
     public T getFirst() {
-        if(isEmpty()) throw new RuntimeException("Empty linked list!");
+        if (isEmpty()) throw new RuntimeException("Empty linked list!");
         return head.getData();
     }
 
     @Override
     public T getLast() {
-        if(isEmpty()) throw new RuntimeException("Empty linked list!");
+        if (isEmpty()) throw new RuntimeException("Empty linked list!");
         return tail.getData();
     }
 
     @Override
     public T getAt(int index) {
-        if(index < 0 || index >= size) throw new IllegalArgumentException();
+        if (index < 0 || index >= size) throw new IllegalArgumentException();
 
         int i;
         Node<T> currentNode;
 
-        if(index < size / 2){
+        if (index < size / 2) {
             i = 0;
             currentNode = head;
             while (i != index) {
                 currentNode = currentNode.getNext();
                 i++;
             }
-        }else{
+        } else {
             i = size - 1;
             currentNode = tail;
             while (i != index) {
@@ -98,11 +98,11 @@ public class DoublyLinkedList<T> implements DoublyLinkedListImp<T> {
 
     @Override
     public T removeFirst() {
-        if(isEmpty()) throw new RuntimeException("Empty linked list!");
+        if (isEmpty()) throw new RuntimeException("Empty linked list!");
         T data = head.getData();
         head = head.getNext();
         size--;
-        if(isEmpty()) tail = null;
+        if (isEmpty()) tail = null;
         else head.setPrev(null);
 
         return data;
@@ -110,11 +110,11 @@ public class DoublyLinkedList<T> implements DoublyLinkedListImp<T> {
 
     @Override
     public T removeLast() {
-        if(isEmpty()) throw new RuntimeException("Empty linked list!");
+        if (isEmpty()) throw new RuntimeException("Empty linked list!");
         T data = tail.getData();
         tail = tail.getPrev();
         size--;
-        if(isEmpty()) head = null;
+        if (isEmpty()) head = null;
         else tail.setNext(null);
 
         return data;
@@ -122,8 +122,8 @@ public class DoublyLinkedList<T> implements DoublyLinkedListImp<T> {
 
     @Override
     public T remove(Node<T> node) {
-        if(node.getPrev()==null) removeFirst();
-        if(node.getNext()==null) removeLast();
+        if (node.getPrev() == null) removeFirst();
+        if (node.getNext() == null) removeLast();
 
         node.getPrev().setNext(node.getNext());
         node.getNext().setPrev(node.getPrev());
@@ -143,17 +143,17 @@ public class DoublyLinkedList<T> implements DoublyLinkedListImp<T> {
     public boolean remove(Object object) {
         Node<T> currentNode = head;
 
-        if(object == null){
-            while (currentNode != null){
-                if(currentNode.getData() == null){
+        if (object == null) {
+            while (currentNode != null) {
+                if (currentNode.getData() == null) {
                     remove(currentNode);
                     return true;
                 }
                 currentNode = currentNode.getNext();
             }
-        }else{
-            while (currentNode != null){
-                if(currentNode.getData() == object){
+        } else {
+            while (currentNode != null) {
+                if (currentNode.getData() == object) {
                     remove(currentNode);
                     return true;
                 }
@@ -165,19 +165,19 @@ public class DoublyLinkedList<T> implements DoublyLinkedListImp<T> {
 
     @Override
     public T removeAt(int index) {
-        if(index < 0 || index >= size) throw new IllegalArgumentException();
+        if (index < 0 || index >= size) throw new IllegalArgumentException();
 
         int i;
         Node<T> currentNode;
 
-        if(index < size / 2){
+        if (index < size / 2) {
             i = 0;
             currentNode = head;
             while (i != index) {
                 currentNode = currentNode.getNext();
                 i++;
             }
-        }else{
+        } else {
             i = size - 1;
             currentNode = tail;
             while (i != index) {
@@ -200,13 +200,48 @@ public class DoublyLinkedList<T> implements DoublyLinkedListImp<T> {
     }
 
     @Override
-    public void printData() {
-
+    public void printData(DoublyLinkedList<T> list) {
+        for (int i = 0; i < size; i++) {
+            System.out.print(list.getAt(i).toString());
+        }
     }
 
     @Override
     public Iterator iterator() {
-        return null;
+        return new Iterator<>() {
+            private Node<T> currentNode = head;
+
+            @Override
+            public boolean hasNext() {
+                return currentNode.getNext() != null;
+            }
+
+            @Override
+            public T next() {
+                T data = currentNode.getData();
+                currentNode = currentNode.getNext();
+                return data;
+            }
+        };
+    }
+
+    @Override
+    public String toString() {
+        if(isEmpty()) return "[]";
+        else{
+            StringBuilder sb = new StringBuilder(size);
+            sb.append("[ ");
+
+            Node<T> currentNode = head;
+
+            while (currentNode!=null){
+                sb.append(currentNode.getData());
+                if(currentNode.getNext()!=null) sb.append(", ");
+                currentNode = currentNode.getNext();
+            }
+            sb.append(" ]");
+            return sb.toString();
+        }
     }
 }
 

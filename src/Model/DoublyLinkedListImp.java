@@ -48,5 +48,6 @@ public interface DoublyLinkedListImp<T> extends Iterable<T>{
     // O(n)
     boolean contains(Object object);
 
-    void printData();
+    void printData(DoublyLinkedList<T> list);
+
 }

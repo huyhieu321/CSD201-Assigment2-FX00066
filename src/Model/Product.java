@@ -1,9 +1,18 @@
 package Model;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
+    String productID;
+    String productTitle;
+    int productQuantity;
+    double productPrice;
 
     public Product(String bCode, String title, int quantity, double price) {
-
+        this.productID = bCode;
+        this.productTitle = title;
+        this.productPrice = price;
+        this.productQuantity = quantity;
     }
 
     public Product() {
@@ -12,7 +21,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "";
+        return productID + "\t\t" + productTitle + "\t\t" + productQuantity + "\t\t" + productPrice;
     }
 
 }

@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.*;
+import java.util.LinkedList;
 
 public class OperationToProduct {
 
@@ -17,7 +18,7 @@ public class OperationToProduct {
 
     // Write all product of Linked List to file
     public void writeAllItemsToFile(String fileName, DoublyLinkedList<Product> list) {
-        for (int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             try {
                 FileOutputStream fileOut = new FileOutputStream(fileName);
                 ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
@@ -70,7 +71,7 @@ public class OperationToProduct {
 
     // Display information of all product on Linked list
     public void displayAll(DoublyLinkedList<Product> list) {
-        list.printData();
+        list.printData(list);
     }
 
     // Search first element by ID
@@ -80,13 +81,30 @@ public class OperationToProduct {
 
     // Delete first element by ID (=ID)
     public void deleteByCode(DoublyLinkedList<Product> list, String key) {
-
+        boolean isExist = false;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.getAt(i).productID.equals(key)) {
+                list.removeAt(i);
+                isExist = true;
+                System.out.println("Delete success!");
+            }
+        }
+        if(!isExist){
+          System.out.println(key + " is not exist in database");
+        }
     }
 
 // Sort by ID
-
     public void sortByCode(DoublyLinkedList<Product> list) {
-
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.getAt(i).productID.compareTo(list.getAt(j).productID)>0) {
+                    Product temp = list.getAt(i);
+                    list.getAt(i) = list.getAt(j);
+                    names[j] = temp;
+                }
+            }
+        }
     }
 
     // Convert to binary
